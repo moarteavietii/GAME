@@ -37,6 +37,6 @@ function changeName() {
 
 function addPoints(x) {
     var current = $.cookie('pt');
-    $.cookie('pt', current.parseInt() + x);
+    $.cookie('pt', current + x);
     $("#score").html($.cookie('pt'));
 }
