@@ -9,11 +9,34 @@ $(document).ready(function() {
                 $.cookie('lang', $(this).val());
                 changeLang();
             });
+            $("#yourname").change(function() {
+                $.cookie('user', $(this).val());
+                changeName();
+            });
         });
     });
 });
 
+var ptforlang = false;
+var ptforname = false;
+
 function changeLang() {
     $("#flag").removeAttr('class');
     $("#flag").addClass($.cookie('lang'));
+    if (!ptforlang) {
+        addPoints(10);
+    }
+}
+
+function changeName() {
+    $("#name").html($.cookie('user'));
+    if (!ptforname) {
+        addPoints(10);
+    }
+}
+
+function addPoints(x) {
+    var current = $.cookie('pt');
+    $.cookie('pt', current.parseInt() + x);
+    $("#score").html($.cookie('pt'));
 }
